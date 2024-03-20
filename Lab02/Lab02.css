@@ -68,34 +68,45 @@ html {
   font-family: Calibri, 'Trebuchet MS', sans-serif;
   background: linear-gradient(180deg, #84daf5, #89ffff, #affffa, #ffffff);
 }
-body {
+body { 
+  margin: 1rem 5rem;
 }
 
 h1 {
   text-align: center;
+  filter: drop-shadow(2px 2px 1px #0f6a9e)
 }
 h2 {
   margin: 4rem auto 1rem auto;
   text-align: center;
 }
-p,
-li {
+p, li {
+  font-size:20px;
+  
 }
 ol {
   padding: 20px;
+  
 }
 
 ol li {
   padding: 10px 0;
+  
 }
 img {
+  margin: 1rem;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .5);
+  color: rgb(0, 58, 66);
 }
 figcaption {
   text-align: center;
   font-weight: bold;
+  color: rgb(0, 58, 66)
 }
 footer {
   margin: 2rem 0 2rem 0;
+  text-align: center;
 }
 
 /* ---CUSTOM CLASS NAME SELECTORS--- */
@@ -103,6 +114,8 @@ footer {
 .banner-div {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+ 
 }
 #banner-long {
   max-width: 100%;
@@ -110,27 +123,38 @@ footer {
 }
 #banner-short {
   width: 230px;
+  display: none;
 }
 .img-div {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .tips-div {
   display: flex;
   flex-wrap: nowrap;
   justify-content: start;
+
+  
+  
+  
+  
 }
 .top-places-div {
   max-width: 800px;
   margin: 5rem auto;
   color: rgb(253, 197, 132);
   padding: 1rem 2rem;
+  background-color: rgb(0, 58, 66);
+  border-radius: 1rem ;
+ 
 }
 .top-places-div h2 {
   text-align: center;
   margin: 1rem auto;
   font-weight: lighter;
+  
 }
 
 /* ----- MEDIA QUERIES for RESPONSIVE DESIGN ----- */
@@ -143,6 +167,8 @@ footer {
 
 @media only screen and (max-width: 1100px) {
   .tips-div {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
@@ -153,6 +179,7 @@ footer {
   p,
   li {
     font-size: 16px;
+    
   }
   .img-div img {
     width: 230px;
@@ -161,8 +188,12 @@ footer {
     width: 230px;
   }
   #banner-long {
+    display: none;
   }
   #banner-short {
+    display: block; 
+    
+  
   }
 }
 /* ------------------------- */

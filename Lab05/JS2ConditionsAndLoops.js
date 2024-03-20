@@ -46,7 +46,6 @@ Question 1: Driving the speed limit.. ? \n`);
  * ↓ YOUR CODE HERE ↓ */
 
 
-
 /*-------------------------------------------------------*/
 
 console.log(`--------------------------
@@ -66,6 +65,8 @@ Question 2: Is it time to wake up for work? \n`);
 
 
 
+
+
 /*-------------------------------------------------------*/
 
 console.log(`--------------------------
@@ -81,6 +82,12 @@ Question 3: Username & Password \n`);
  *	        - otherwise, print "Admin Access Denied"
  * 
  * ↓ YOUR CODE HERE ↓ */
+ 
+
+ 
+
+
+
 
 
 
@@ -102,6 +109,10 @@ Question 4: Student Class \n`);
  * 
  * ↓ YOUR CODE HERE ↓ */
 
+      
+   
+
+
 
 
 /*-------------------------------------------------------*/
@@ -119,6 +130,9 @@ Question 5: Loops! \n`);
 
 
 
+
+
+
 /*-------------------------------------------------------*/
 
 console.log(`--------------------------
@@ -131,11 +145,13 @@ Question 6: Debugging an infinite loop! \n`);
  * 
  * ↓ YOUR CODE HERE ↓ */
 
-   /*    
+
+
+  /**   
    for (let i = 11; i > 10; i++) { 
       console.log(i);   
    } 
-  */
+  
 
 
 
