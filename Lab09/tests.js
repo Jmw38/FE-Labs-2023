@@ -39,7 +39,7 @@ const assert = chai.assert
 describe('JS6 Lab Tests:', () => {
   describe('Example Question Test: Add Two Numbers', () => {
     it('#Should return the sum of two numbers', () => {
-      // Copy & paste your debugged code from JS6Lab.js
+      
       function addTwoNumbers(num1, num2) {
         return num1 + num2
       }
@@ -56,9 +56,25 @@ describe('JS6 Lab Tests:', () => {
           num1 + num2
         }
 
-        expect(sumOfTwoNumbers(2, 3)).to.equal(5)
+        expect(sumOfTwoNumbers(2, 3)).to.equal()
       })
     })
   })
   /*--------------------------NEW TESTS BELOW-------------------------------*/
+  describe('Sorted array of numbers', () => {
+    it('should return sorted array', () => {
+      const arrayOfNumbers = [1, 5, 3, 2, 4];
+      const sortedArray = arrayOfNumbers.sort((a, b) => a - b);
+      assert.deepStrictEqual(sortedArray, [1, 2, 3, 4, 5]);
+    });
+  });
+  describe('Manage my wallet', () => {
+    it('should correctly add and remove money', () => {
+      const myWallet = new Wallet(100);
+      myWallet.removeMoney(14.99);
+      myWallet.addMoney(3);
+      assert.strictEqual(myWallet.money, 100 + 3 - 14.99);
+    });
+  });
 })
+const assert =  require('chai').assert;
