@@ -75,6 +75,7 @@ Part 1: Setup your JSON server`)
  * Step 3: Below, create a const declaration for your URL endpoint
  *
  * ↓ YOUR CODE HERE ↓ */
+const apiUrl = 'http://localhost:3000/studentRoster';
 
 /*------------------------ Part 2: HTTP Verb: GET ------------------------*/
 console.log(
@@ -91,6 +92,20 @@ Part 2: GET and displaying the information`
  *         Reminder: While you are not required to, the lab solution uses a <table>
  *
  * ↓ YOUR CODE HERE ↓ */
+$.get(apiUrl).then(data => console.log(data));
+
+$.get(apiUrl).then(data => {
+  data.forEach(student => {
+    $('#studentTable tbody').append(`
+    <tr>
+      <td>${student.id}</td>
+      <td>${student.name}</td>
+      <td>${student.researchAssignment}</td>
+    </tr>
+    `);
+  });
+});
+
 
 /*------------------------ Part 3: HTTP Verb: POST ------------------------*/
 console.log(
@@ -116,6 +131,24 @@ Part 3: POST and adding new students`
  *         Your button should now post a new user on click.
  *
  * ↓ YOUR CODE HERE ↓ */
+$('#addStudentForm').on('submit', function(event) {
+  event.preventDefault();
+  console.log('pls work');
+});
+
+$('#addStudentForm').on('submit', function(event) {
+  event.preventDefault();
+  $.post(apiUrl, {
+    name: $('#studentName').val(),
+    researchAssignment: $('#researchAssignment').val()
+  }).then(response => {
+    console.log(response);
+    // Add logic to update DOM if needed
+  }).catch(error => {
+    console.log('Error:', error);
+  });
+});
+
 
 /*------------------------ Part 4: HTTP Verb: DELETE ------------------------*/
 console.log(
@@ -149,6 +182,32 @@ Part 4: DELETE and deleting individual students`
  *         Your elements should now be getting deleted!
  *
  * ↓ YOUR CODE HERE ↓ */
+// Inside your loop where you add data to the DOM
+let deleteButton = $('<button>').text('delete').addClass('delete-btn');
+deleteButton.on('click', function() {
+  deleteUser(student.id); // Assuming student has an 'id' property
+});
+let deleteTd = $('<td>').append(deleteButton);
+
+function deleteUser(id) {
+  $.ajax({
+    url: apiUrl + '/' + id,
+    type: 'DELETE',
+    success: function(response) {
+      console.log('User deleted:', response);
+      // Update the DOM as needed
+    },
+    error: function(xhr, status, error) {
+      console.log('Error deleting user:', error);
+    }
+  });
+}
+
+// Inside your loop where you add data to the DOM
+let deleteButtons = $('<button>').text('delete').addClass('delete-btn');
+deleteButton.attr('onclick', 'deleteUser(' + student.id + ')');
+let deleteTds = $('<td>').append(deleteButton);
+
 
 /*------------------------ HTTP Verb: UPDATE ------------------------*/
 console.log(
@@ -173,6 +232,42 @@ Part 4: PUT and updating the information`
  *         do the updateUser function on click.
  *
  * ↓ YOUR CODE HERE ↓ */
+function updateUser(id, name, assignment) {
+  $.ajax({
+      url: `http://localhost:3000/studentRoster/${id}`, // Assuming this is your API endpoint
+      method: 'PUT',
+      data: {
+          name: name,
+          assignment: assignment
+      },
+      success: function(response) {
+          console.log('Update successful:', response);
+          // You can add further logic here, such as updating the UI
+      },
+      error: function(xhr, status, error) {
+          console.error('Update error:', error);
+          // Handle the error scenario
+      }
+  });
+}
+$(document).ready(function() {
+  // Your existing code for updateUser() function
+
+  // Event listener for the update button
+  $('#updateBtn').click(function(event) {
+      event.preventDefault(); // Prevent the default form submission behavior
+
+      // Get the input values
+      let id = $('#idInput').val();
+      let name = $('#nameInput').val();
+      let assignment = $('#assignmentInput').val();
+
+      // Call the updateUser function with the input values
+      updateUser(id, name, assignment);
+  });
+});
+
+
 
 console.log(`-----------Finished------------`)
 

@@ -15,6 +15,62 @@
   </head>
   <body>
     <!-- Your HTML Code below here -->
+    <form id="addStudentForm">
+      <label for="studentName">Name:</label>
+      <input type="text" id="studentName" name="studentName">
+      <label for="researchAssignment">Research Assignment:</label>
+      <input type="text" id="researchAssignment" name="researchAssignment">
+      <button type="submit">Add Student</button>
+    </form>
+
+    <form id="updateForm">
+      <label for="studentId">ID:</label>
+      <input type="number" id="studentId" name="studentId" required><br>
+  
+      <label for="studentName">Name:</label>
+      <input type="text" id="studentName" name="studentName" required><br>
+  
+      <label for="researchAssignment">Research Assignment:</label>
+      <input type="text" id="researchAssignment" name="researchAssignment" required><br>
+  
+      <button type="submit">Update Student</button>
+  </form>
+
+  <table id="studentTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Research Assignment</th>
+            <th>Action</th> <!-- This is for delete/update buttons -->
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        <!-- Table rows will be dynamically added here -->
+    </tbody>
+</table>
+<div class="container">
+  <div class="row">
+      <!-- Loop through students and create a card for each -->
+      <div class="col-md-4">
+          <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title">Student Name</h5>
+                  <p class="card-text">Research Assignment: Assignment Details</p>
+                  <button class="btn btn-primary">Update</button>
+                  <button class="btn btn-danger">Delete</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="card-body">
+  <!-- Other card content -->
+  <button class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+</div>
+
+
+  
 
     <!-- ALL OF YOUR JQUERY/BOOTSTRAP/SCRIPT SETUP ARE BELOW HERE. 
   WE USE CDN'S (content delivery network) INSTEAD OF NODE_MODULES -->
