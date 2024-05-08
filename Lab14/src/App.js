@@ -115,8 +115,10 @@
  */
 
 /* -- ALL YOUR COMPONENT/STYLE IMPORTS HERE -- */
+import { useState } from 'react'
 import './App.css'
 import Nav from './Nav'
+import {useState} from 'react';
 
 let date = new Date()
 
@@ -125,7 +127,26 @@ let singleUser = {
   todaysDate: date.toDateString(),
 }
 
+let allCustomers = [
+  {
+    firstName: 'Shawn',
+    lastName: 'Lennon',
+    appointmentTime: '1:00PM',
+  },
+  {
+    firstName: 'Jewel',
+    lastName: 'Ronnie',
+    appointmentTime: '2:00PM',
+  },
+  {
+    firstName: 'Martie',
+    lastName: 'Francis',
+    appointmentTime: '3:00PM',
+  },
+];
+
 function App() {
+  const [customers, setCustomers] = useState(allCustomers);
   return (
     <div className="App">
       <Nav />
@@ -133,6 +154,7 @@ function App() {
         <h1>Welcome, {singleUser.name}</h1>
         <p>Todays date is: {singleUser.todaysDate}</p>
       </section>
+      <appointments customers={customers}/>
     </div>
   )
 }
